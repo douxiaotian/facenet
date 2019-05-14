@@ -179,12 +179,11 @@ def main(args):
             n = len(train_set)
             
             while epoch < args.max_nrof_epochs:
-                
                 step = sess.run(global_step, feed_dict=None)
                 epoch = step // args.epoch_size
                 # Train for one epoch
                 if m < n:
-                    train_set = train_set[1, m]
+                    train_set = train_set[1:m]
                 train(args, sess, train_set, epoch, image_paths_placeholder, labels_placeholder, labels_batch,
                     batch_size_placeholder, learning_rate_placeholder, phase_train_placeholder, enqueue_op, input_queue, global_step, 
                     embeddings, total_loss, train_op, summary_op, summary_writer, args.learning_rate_schedule_file,
