@@ -175,7 +175,7 @@ def main(args):
             # Training and validation loop
             epoch = 0
 
-            m = 3
+            m = 50
             n = len(train_set)
             
             while epoch < args.max_nrof_epochs:
