@@ -187,6 +187,7 @@ def main(args):
                     print(m)
                     print(n)
                     train_set = train_set[1:m]
+                    print(train_set)
                     m = m*3
                 train(args, sess, train_set, epoch, image_paths_placeholder, labels_placeholder, labels_batch,
                     batch_size_placeholder, learning_rate_placeholder, phase_train_placeholder, enqueue_op, input_queue, global_step, 
@@ -323,15 +324,19 @@ def sample_people(dataset, people_per_batch, images_per_person):
   
     # Sample classes from the dataset
     nrof_classes = len(dataset)
+    print("start")
+    print(nrof_classes)
     class_indices = np.arange(nrof_classes)
+    print(class_indices)
     np.random.shuffle(class_indices)
-    
     i = 0
     image_paths = []
     num_per_class = []
     sampled_class_indices = []
     # Sample images from these classes until we have enough
     while len(image_paths)<nrof_images:
+        print("i")
+        print(i)
         class_index = class_indices[i]
         nrof_images_in_class = len(dataset[class_index])
         image_indices = np.arange(nrof_images_in_class)
