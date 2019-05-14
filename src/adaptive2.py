@@ -224,6 +224,9 @@ def train(args, sess, dataset, epoch, image_paths_placeholder, labels_placeholde
         start_time = time.time()
         nrof_examples = args.people_per_batch * args.images_per_person
         labels_array = np.reshape(np.arange(nrof_examples),(-1,3))
+        # add line to %3 good 
+        lens_image_paths = len(image_paths) 
+        image_paths = image_paths[0:lens_image_paths - lens_image_paths%3]
         image_paths_array = np.reshape(np.expand_dims(np.array(image_paths),1), (-1,3))
         sess.run(enqueue_op, {image_paths_placeholder: image_paths_array, labels_placeholder: labels_array})
         emb_array = np.zeros((nrof_examples, embedding_size))
