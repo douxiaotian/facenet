@@ -94,6 +94,9 @@ def main(args):
                                     dtypes=[tf.string, tf.int64],
                                     shapes=[(3,), (3,)],
                                     shared_name=None, name=None)
+        print("holder")
+        print(image_paths_placeholder)
+        print(labels_placeholder)
         enqueue_op = input_queue.enqueue_many([image_paths_placeholder, labels_placeholder])
         
         nrof_preprocess_threads = 4
