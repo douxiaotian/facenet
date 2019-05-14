@@ -334,9 +334,8 @@ def sample_people(dataset, people_per_batch, images_per_person):
     num_per_class = []
     sampled_class_indices = []
     # Sample images from these classes until we have enough
-    while len(image_paths)<nrof_images:
-        print("i")
-        print(i)
+    while (len(image_paths)<nrof_images) and (i < class_indices):
+
         class_index = class_indices[i]
         nrof_images_in_class = len(dataset[class_index])
         image_indices = np.arange(nrof_images_in_class)
