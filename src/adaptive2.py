@@ -183,7 +183,11 @@ def main(args):
                 epoch = step // args.epoch_size
                 # Train for one epoch
                 if m < n:
+                    print("m,n happen")
+                    print(m)
+                    print(n)
                     train_set = train_set[1:m]
+                    m = m*3
                 train(args, sess, train_set, epoch, image_paths_placeholder, labels_placeholder, labels_batch,
                     batch_size_placeholder, learning_rate_placeholder, phase_train_placeholder, enqueue_op, input_queue, global_step, 
                     embeddings, total_loss, train_op, summary_op, summary_writer, args.learning_rate_schedule_file,
