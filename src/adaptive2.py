@@ -37,9 +37,7 @@ import itertools
 import argparse
 import facenet
 import lfw
-
 from tensorflow.python.ops import data_flow_ops
-
 from six.moves import xrange  # @UnresolvedImport
 
 def main(args):
@@ -185,13 +183,15 @@ def main(args):
                 step = sess.run(global_step, feed_dict=None)
                 epoch = step // args.epoch_size
                 # Train for one epoch
-                if m < n:
+           '''
+               if m < n:
                     print("m,n happen")
                     print(m)
                     print(n)
                     train_set = train_set[1:m]
                     print(train_set)
                     m = m*3
+           '''
                 train(args, sess, train_set, epoch, image_paths_placeholder, labels_placeholder, labels_batch,
                     batch_size_placeholder, learning_rate_placeholder, phase_train_placeholder, enqueue_op, input_queue, global_step, 
                     embeddings, total_loss, train_op, summary_op, summary_writer, args.learning_rate_schedule_file,
@@ -230,6 +230,7 @@ def train(args, sess, dataset, epoch, image_paths_placeholder, labels_placeholde
         # add line to %3 good 
         lens_image_paths = len(image_paths) 
         image_paths = image_paths[0:lens_image_paths - lens_image_paths%3]
+        print 
         image_paths_array = np.reshape(np.expand_dims(np.array(image_paths),1), (-1,3))
         sess.run(enqueue_op, {image_paths_placeholder: image_paths_array, labels_placeholder: labels_array})
         emb_array = np.zeros((nrof_examples, embedding_size))
