@@ -175,7 +175,6 @@ def main(args):
 
             # Training and validation loop
             epoch = 0
-
             m = 20
             n = len(train_set)
             
