@@ -203,7 +203,7 @@ def train(args, sess, dataset, epoch, image_paths_placeholder, labels_placeholde
     n = len(dataset)
 
     while m < n:
-        new_dataset = dataset[1, m]
+        new_dataset = dataset[1:m]
         batch_number = 0
         if args.learning_rate>0.0:
             lr = args.learning_rate
